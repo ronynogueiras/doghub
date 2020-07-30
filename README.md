@@ -4,6 +4,8 @@ Este projeto foi criado utilizando [Create React App](https://github.com/faceboo
 
 Para executar o projeto, seguir os passos:
 
+- git clone https://github.com/ronynogueiras/doghub.git
+- cd doghub
 - yarn install
 - cp .env.example .env
 - yarn fake-api
