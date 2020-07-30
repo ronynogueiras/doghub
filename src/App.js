@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { createBrowserHistory } from "history";
+import Routes from "./routes";
+import store from "./store";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
-function App() {
+import "./App.css";
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#868686",
+    },
+    secondary: {
+      main: "#007bb2",
+    },
+  },
+});
+
+const history = createBrowserHistory();
+
+const App = () => {
+  const handleRouteUpdate = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Router history={history} onUpdate={handleRouteUpdate}>
+          <Routes />
+        </Router>
+      </ThemeProvider>
+    </Provider>
   );
-}
+};
 
 export default App;
